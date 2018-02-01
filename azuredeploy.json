@@ -3,59 +3,59 @@
 	"contentVersion": "1.0.0.0",
 	"parameters": {
 		"DRASRname": {
-			"type": "String"
+			"type": "String",
 			"defaultValue": "DRasr"
 		},
 		
 		"ASRDRlocation": {
-			"type": "String"
+			"type": "String",
 			"defaultValue": "eastus2"
 		},
 		"ASRprimarylocation": {
-			"type": "String"
+			"type": "String",
 			"defaultValue": "eastus"
 		},
 		"PrimaryResourceGroup": {
-			"type": "String"
+			"type": "String",
 			"defaultValue": "primary"
 		},
 		"DRResourceGroup": {
-			"type": "String"
+			"type": "String",
 			"defaultValue": "DR"
 		},
 		"protectedItemname": {
-			"type": "String"
+			"type": "String",
 			"defaultValue": "ProtectedItems1"
 		},
 		"primarychachestorage": {
-			"type": "String"
+			"type": "String",
 			"defaultValue": "primarystorageasr"
 		},
 		"drstorage": {
 			"defaultValue": "drstorageasr"
 		},
 		"Primaryvnet": {
-			"type": "String"
+			"type": "String",
 			"defaultValue": "AzurevnetESU2"
 		},
 		"DRvnet": {
-			"type": "String"
+			"type": "String",
 			"defaultValue": "AzurevnetESU2"
 		},
 		"vhduri": {
-			"type": "String"
+			"type": "String",
 			"defaultValue": "https://primarystorageasr.blob.core.windows.net/vhds/PrimaryVM20180130151117.vhd"
 		},
 		"replicationFabricsprimary": {
-			"type": "String"
+			"type": "String",
 			"defaultValue": "asr-a2a-default-eastus"
 		},
 		"replicationFabricsdr": {
-			"type": "String"
+			"type": "String",
 			"defaultValue": "asr-a2a-default-eastus2"
 		},
 		"replicationPoliciesname": {
-			"type": "String"
+			"type": "String",
 			"defaultValue": "24-hour-retention-policy"
 		}
 	},
