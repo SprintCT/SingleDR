@@ -58,10 +58,7 @@
 		"replicationPoliciesname": {
 			"type": "String",
 			"defaultValue": "24-hour-retention-policy"
-		},
-		"subscription": {
-			"type": "String",
-			"defaultValue": "
+		}		
 	},
 	"variables": {
 		"replicationFabricsprimaryname": "[concat(parameters('DRASRname'),'/asr-a2a-default-',parameters('ASRprimarylocation'))]",
