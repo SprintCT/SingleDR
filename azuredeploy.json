@@ -4,46 +4,59 @@
 	"parameters": {
 		"DRASRname": {
 			"type": "String"
+			"defaultValue": "DRasr"
 		},
 		
 		"ASRDRlocation": {
 			"type": "String"
+			"defaultValue": "eastus2"
 		},
 		"ASRprimarylocation": {
 			"type": "String"
+			"defaultValue": "eastus"
 		},
 		"PrimaryResourceGroup": {
 			"type": "String"
+			"defaultValue": "primary"
 		},
 		"DRResourceGroup": {
 			"type": "String"
+			"defaultValue": "DR"
 		},
 		"protectedItemname": {
 			"type": "String"
+			"defaultValue": "ProtectedItems1"
 		},
 		"primarychachestorage": {
 			"type": "String"
+			"defaultValue": "primarystorageasr"
 		},
 		"drstorage": {
-			"type": "String"
+			"defaultValue": "drstorageasr"
 		},
 		"Primaryvnet": {
 			"type": "String"
+			"defaultValue": "AzurevnetESU2"
 		},
 		"DRvnet": {
 			"type": "String"
+			"defaultValue": "AzurevnetESU2"
 		},
 		"vhduri": {
 			"type": "String"
+			"defaultValue": "https://primarystorageasr.blob.core.windows.net/vhds/PrimaryVM20180130151117.vhd"
 		},
 		"replicationFabricsprimary": {
 			"type": "String"
+			"defaultValue": "asr-a2a-default-eastus"
 		},
 		"replicationFabricsdr": {
 			"type": "String"
+			"defaultValue": "asr-a2a-default-eastus2"
 		},
 		"replicationPoliciesname": {
 			"type": "String"
+			"defaultValue": "24-hour-retention-policy"
 		}
 	},
 	"variables": {
