@@ -5,6 +5,7 @@
 		"DRASRname": {
 			"type": "String"
 		},
+		
 		"ASRDRlocation": {
 			"type": "String"
 		},
