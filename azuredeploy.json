@@ -58,7 +58,10 @@
 		"replicationPoliciesname": {
 			"type": "String",
 			"defaultValue": "24-hour-retention-policy"
-		}
+		},
+		"subscription": {
+			"type": "String",
+			"defaultValue": "
 	},
 	"variables": {
 		"replicationFabricsprimaryname": "[concat(parameters('DRASRname'),'/asr-a2a-default-',parameters('ASRprimarylocation'))]",
@@ -122,7 +125,7 @@
 		{
 			"name": "[variables('replicationProtectionContainersprimaryname')]",
 			"dependsOn": [
-                "concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',parameters('DRResourceGroup'),'/providers/Microsoft.RecoveryServices/vaults/',parameters('DRASRname'),'/replicationFabrics/asr-a2a-default-',parameters('ASRprimarylocation'))"
+                "concat('Microsoft.RecoveryServices/vaults/replicationFabricsresourceGroups/',variables('replicationFabricsprimaryname'))"
             ],
 			"type": "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers",
 			"apiVersion": "2016-08-10",
