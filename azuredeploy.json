@@ -3,7 +3,7 @@
 	"contentVersion": "1.0.0.0",
 	"parameters": {
 		"DRASRname": {
-			"type": "string",
+			"type": "String",
 			"defaultValue": "DRasr"
 		},
 		
@@ -32,6 +32,7 @@
 			"defaultValue": "primarystorageasr"
 		},
 		"drstorage": {
+			"type": "String",
 			"defaultValue": "drstorageasr"
 		},
 		"Primaryvnet": {
