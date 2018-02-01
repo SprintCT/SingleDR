@@ -1,0 +1,49 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"DRASRname": {
+			"value": "DRasr"
+		},
+		"ASRDRlocation": {
+			"value": "eastus2"
+		},
+		"ASRprimarylocation": {
+			"value": "eastus"
+		},
+		"PrimaryResourceGroup": {
+			"value": "primary"
+		},
+		"DRResourceGroup": {
+			"value": "DR"
+		},
+		"Primaryvnet": {
+			"value": "AzurevnetEUS"
+		},
+		"DRvnet": {
+			"value": "AzurevnetESU2"
+		},
+		"protectedItemname": {
+			"value": "ProtectedItems1"
+		},
+		"vhduri": {
+			"value": "https://primarystorageasr.blob.core.windows.net/vhds/PrimaryVM20180130151117.vhd"
+		},
+		"primarychachestorage": {
+			"value": "primarystorageasr"
+		},
+		"drstorage": {
+			"value": "drstorageasr"
+		},
+		"replicationFabricsprimary": {
+			"value": "asr-a2a-default-eastus"
+		},
+		"replicationFabricsdr": {
+			"value": "asr-a2a-default-eastus2"
+		},
+		"replicationPoliciesname": {
+			"value": "24-hour-retention-policy"
+		}
+		
+	}
+}

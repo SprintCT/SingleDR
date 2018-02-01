@@ -1,0 +1,122 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"DRASRname": {
+			"type": "String"
+		},
+		"ASRDRlocation": {
+			"type": "String"
+		},
+		"ASRprimarylocation": {
+			"type": "String"
+		},
+		"PrimaryResourceGroup": {
+			"type": "String"
+		},
+		"DRResourceGroup": {
+			"type": "String"
+		},
+		"protectedItemname": {
+			"type": "String"
+		},
+		"primarychachestorage": {
+			"type": "String"
+		},
+		"drstorage": {
+			"type": "String"
+		},
+		"Primaryvnet": {
+			"type": "String"
+		},
+		"DRvnet": {
+			"type": "String"
+		},
+		"vhduri": {
+			"type": "String"
+		},
+		"replicationFabricsprimary": {
+			"type": "String"
+		},
+		"replicationFabricsdr": {
+			"type": "String"
+		},
+		"replicationPoliciesname": {
+			"type": "String"
+		}
+	},
+	"variables": {
+		"replicationFabricsprimaryname": "[concat(parameters('DRASRname'),'/asr-a2a-default-',parameters('ASRprimarylocation'))]",
+		"replicationFabricsdrname": "[concat(parameters('DRASRname'),'/asr-a2a-default-',parameters('ASRDRlocation'))]",
+		"replicationProtectionContainersprimaryname": "[concat(variables('replicationFabricsprimaryname'),'/containers')]",
+		"replicationProtectionContainersdrname": "[concat(variables('replicationFabricsdrname'),'/containers')]",
+		"replicationProtectionContainerMappingsname": "[concat(variables('replicationProtectionContainersprimaryname'),'/mapping')]",
+		"replicationProtectedItemsname": "[concat(variables('replicationProtectionContainersprimaryname'),'/ProtectedItemstest')]",
+		"replicationNetworkMappingsname": "[concat(variables('replicationFabricsdrname'),'/azureNetwork/networkmappingtest')]",
+		"replicationPoliciesnametest": "[concat(parameters('DRASRname'),'/24-hour-retention-policy')]"
+	},
+	"resources": [
+		{
+			"type": "Microsoft.RecoveryServices/vaults",
+			"sku": {
+				"name": "RS0",
+				"tier": "Standard"
+			},
+			"name": "[parameters('DRASRname')]",
+			"apiVersion": "2016-08-10",
+			"location": "[parameters('ASRDRlocation')]",
+			"properties": {}
+		},
+		{
+			"type": "Microsoft.RecoveryServices/vaults/replicationFabrics",
+			"name": "[variables('replicationFabricsprimaryname')]",
+			"apiVersion": "2016-08-10",
+			"properties": {
+				"customDetails": {
+					"instanceType": "A2A",
+					"location": "[parameters('ASRprimarylocation')]"
+				}
+			}
+		},
+		{
+			"type": "Microsoft.RecoveryServices/vaults/replicationFabrics",
+			"name": "[variables('replicationFabricsdrname')]",
+			"apiVersion": "2016-08-10",
+			"properties": {
+				"customDetails": {
+					"instanceType": "A2A",
+					"location": "[parameters('ASRDRlocation')]"
+				}
+			}
+		},
+		{
+			"name": "[variables('replicationPoliciesnametest')]",
+			"type": "Microsoft.RecoveryServices/vaults/replicationPolicies",
+			"apiVersion": "2016-08-10",
+			"properties": {
+				"providerSpecificInput": {
+					"instanceType": "A2A",
+					"appConsistentFrequencyInMinutes": 240,
+                    "crashConsistentFrequencyInMinutes": 5,
+                    "multiVmSyncStatus": "Enable",
+                    "recoveryPointHistory": 1440
+                }
+            },
+            "dependsOn": []
+        },
+		{
+			"name": "[variables('replicationProtectionContainersprimaryname')]",
+			"dependsOn": [
+                "concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',parameters('DRResourceGroup'),'/providers/Microsoft.RecoveryServices/vaults/',parameters('DRASRname'),'/replicationFabrics/asr-a2a-default-',parameters('ASRprimarylocation'))"
+            ],
+			"type": "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers",
+			"apiVersion": "2016-08-10",
+			"properties": {
+				"providerSpecificInput": [{
+					"instanceType": "A2A"
+					}]
+				}
+		}
+	]
+}	
+	
