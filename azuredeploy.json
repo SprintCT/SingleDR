@@ -63,7 +63,7 @@
 	"variables": {
 		"replicationFabricsprimaryname": "[concat(parameters('DRASRname'),'/asr-a2a-default-',parameters('ASRprimarylocation'))]",
 		"replicationFabricsdrname": "[concat(parameters('DRASRname'),'/asr-a2a-default-',parameters('ASRDRlocation'))]",
-		"replicationProtectionContainersprimaryname": "[concat(variables('replicationFabricsprimaryname'),'/containers')]",
+		"replicationProtectionContainersprimaryname": "[concat(variables('replicationFabricsprimaryname'),'/primarycontainers')]",
 		"replicationProtectionContainersdrname": "[concat(variables('replicationFabricsdrname'),'/containers')]",
 		"replicationProtectionContainerMappingsname": "[concat(variables('replicationProtectionContainersprimaryname'),'/mapping')]",
 		"replicationProtectedItemsname": "[concat(variables('replicationProtectionContainersprimaryname'),'/ProtectedItemstest')]",
